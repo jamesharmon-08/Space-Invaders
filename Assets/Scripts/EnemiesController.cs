@@ -8,8 +8,12 @@ public class EnemiesController : MonoBehaviour
 
     public GameObject greenEnemy, yellowEnemy, redEnemy;
    
-    public float speed, delayMove;
-    private float currentDelay, currentSpeed;
+    public float speed, delayMove, dropSpeed;
+    public float currentDelay, currentSpeed;
+
+    public bool direction;
+    private float left;
+
 
 
     private void Awake() {
@@ -22,8 +26,48 @@ public class EnemiesController : MonoBehaviour
     void Start()
     {
         // Load enemies
+        spawnEnemies();
+      
+    }
 
-        for(int j=0; j<2; j++)
+    // Update is called once per frame
+    void Update()
+    {
+        currentDelay -= Time.deltaTime;
+        if(currentDelay <= 0)
+        {
+            transform.position = new Vector3(transform.position.x + (currentSpeed*Time.deltaTime), transform.position.y, transform.position.z);
+            currentDelay = delayMove;
+            left = this.transform.childCount;
+            if(left==0)
+            {
+                spawnEnemies();
+            }else {
+            delayMove = 0.3f + (left/36f/2f);
+            }
+        }
+        if(currentSpeed > 0){
+            direction = true;
+        }else
+        {
+            direction = false;
+        }
+
+        
+    }
+    public void DropDown()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y-dropSpeed, transform.position.z);
+        currentSpeed = -1 * currentSpeed;
+        direction =  !direction;
+
+  
+    }
+
+
+    private void spawnEnemies()
+    {
+          for(int j=0; j<2; j++)
         {
             for(int i=0; i<9; i++)
             {
@@ -42,18 +86,6 @@ public class EnemiesController : MonoBehaviour
         }
         currentDelay = delayMove;
         currentSpeed = speed;
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        currentDelay -= Time.deltaTime;
-        if(currentDelay <= 0)
-        {
-            transform.position = new Vector3(transform.position.x + (speed*Time.deltaTime), transform.position.y, transform.position.z);
-            currentDelay = delayMove;
-        }
         
     }
 }

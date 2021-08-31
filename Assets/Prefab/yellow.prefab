@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f393a67da4bd541479d9942999d6a202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayFire: 6
+  delayFire: 9
   currentDelayFire: 0
   missile: {fileID: 919765396511295749, guid: 1d93839ce937e4ba1b58fb0c5d58e229, type: 3}
 --- !u!61 &491007446048649579

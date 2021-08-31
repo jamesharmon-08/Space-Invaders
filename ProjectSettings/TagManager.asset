@@ -6,9 +6,10 @@ TagManager:
   tags:
   - projectile
   - clean_up
-  - bounce
   - Enemy
   - shield
+  - left_bounce
+  - right_bounce
   layers:
   - Default
   - TransparentFX

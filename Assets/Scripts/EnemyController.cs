@@ -9,8 +9,6 @@ public class EnemyController : MonoBehaviour
 
     public GameObject missile;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -36,13 +34,12 @@ public class EnemyController : MonoBehaviour
         
     }
 
-    // private void OnTriggerEnter2D(Collider2D other) {
-    //     if(other.tag == "bounce")
-    //     {
-    //         EnemiesController.instance.speed = -1 * EnemiesController.instance.speed;
-    //         GameObject.other.SetActive(false);
-    //     }
-    // }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if((EnemiesController.instance.direction && other.tag=="right_bounce") || (!EnemiesController.instance.direction && other.tag == "left_bounce"))
+        {
+            EnemiesController.instance.DropDown();
+        }
+    }
 
     private float randDelay(float maxDelay)
     {

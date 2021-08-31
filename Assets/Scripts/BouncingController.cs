@@ -10,13 +10,13 @@ public class BouncingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(twin.activeInHierarchy)
-        {
-            gameObject.SetActive(false);
-        } else
-        {
-            gameObject.SetActive(true);
-        }
+        // if(twin.activeInHierarchy)
+        // {
+        //     gameObject.SetActive(false);
+        // } else
+        // {
+        //     gameObject.SetActive(true);
+        // }
         
     }
 
@@ -27,24 +27,26 @@ public class BouncingController : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "Enemy")
-        {
-            if(direction && EnemiesController.instance.speed > 0)
-            {
-                gameObject.SetActive(false);
-                twin.SetActive(true);
-                EnemiesController.instance.speed = EnemiesController.instance.speed * -1;;
-            }
-            if(!direction && EnemiesController.instance.speed < 0)
-            {
-                gameObject.SetActive(false);
-                twin.SetActive(true);
-                EnemiesController.instance.speed = EnemiesController.instance.speed * -1;
-            }
+    // private void OnTriggerEnter2D(Collider2D other) {
+    //     if(other.tag == "Enemy")
+    //     {
+    //         if(direction && EnemiesController.instance.speed > 0)
+    //         {
+    //             direction = !direction;  
+    //             EnemiesController.instance.speed = EnemiesController.instance.speed * -1;;
+    //             EnemiesController.instance.DropDown();
+
+    //         }
+    //         else if(!direction && EnemiesController.instance.speed < 0)
+    //         {
+    //             direction = !direction;
+    //             EnemiesController.instance.speed = EnemiesController.instance.speed * -1;
+    //             EnemiesController.instance.DropDown();
+
+    //         }
            
-        }
-    }
+    //     }
+    // }
 
     private void flip()
     {
